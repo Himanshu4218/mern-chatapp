@@ -1,0 +1,19 @@
+::-webkit-scrollbar {
+  width: 4px; /* Width of the scrollbar */
+}
+
+/* Style the scrollbar thumb */
+::-webkit-scrollbar-thumb {
+  background-color: hsl(0, 41%, 87%); /* Color of the scrollbar thumb */
+  border-radius: 6px; /* Rounded corners */
+}
+
+/* Style the scrollbar track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Color of the scrollbar track */
+}
+
+/* Style the scrollbar corner */
+::-webkit-scrollbar-corner {
+  background: transparent; /* Color of the scrollbar corner */
+}
