@@ -13,8 +13,13 @@ import { useAlert } from "../Context/alertContext";
 const ChatPage = () => {
   const [fetchAgain, setFetchAgain] = useState(false);
   const [fetchNotificationAgain, setFetchNotificationAgain] = useState(false);
-  const { user, setNotification } = useChat();
+  const { user, setNotification, setSelectedChat } = useChat();
   const { setAlert } = useAlert();
+
+  const handleReset = () => {
+    setFetchAgain(!fetchAgain);
+    setSelectedChat(null);
+  };
 
   useEffect(() => {
     const fetchNotification = async () => {
@@ -50,9 +55,7 @@ const ChatPage = () => {
         {user && (
           <ErrorBoundary
             FallbackComponent={ErrorFallback}
-            onReset={() => {
-              // reset the state of your app so the error doesn't happen again
-            }}
+            onReset={handleReset}
           >
             <Suspense fallback={<Loader />}>
               <MyChats
@@ -64,7 +67,10 @@ const ChatPage = () => {
           </ErrorBoundary>
         )}
         {user && (
-          <ErrorBoundary FallbackComponent={ErrorFallback} onReset={() => {}}>
+          <ErrorBoundary
+            FallbackComponent={ErrorFallback}
+            onReset={handleReset}
+          >
             <Suspense fallback={<Loader />}>
               <Chatbox
                 fetchAgain={fetchAgain}
